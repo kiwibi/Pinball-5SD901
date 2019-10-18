@@ -20,8 +20,8 @@
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>16.0</VCProjectVersion>
-    <ProjectGuid>{DF2B5061-FB47-4BFE-8274-8BC30BE04828}</ProjectGuid>
-    <RootNamespace>MathProject</RootNamespace>
+    <ProjectGuid>{3592E702-B51A-49CD-B02A-6B73C117B6C3}</ProjectGuid>
+    <RootNamespace>PinballGame</RootNamespace>
     <WindowsTargetPlatformVersion>10.0</WindowsTargetPlatformVersion>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.Default.props" />
