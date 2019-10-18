@@ -7,6 +7,7 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 #include "Game.h"
+#include <stdio.h>
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game(){
@@ -159,7 +160,7 @@ void Game::Draw_MtxText(float x, float y, const char *fmt,...){
     //--------------------
 	char text[256]; va_list	ap;
 	if (fmt == NULL) return;
-	va_start(ap, fmt); vsprintf(text, fmt, ap); va_end(ap);
+	va_start(ap, fmt); vsprintf_s(text, fmt, ap); va_end(ap);
 	//--------------------
     int n = 0;
 	glPointSize(2.f);
