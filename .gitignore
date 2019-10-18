@@ -1,6 +1,7 @@
 # Folders
 Build/
 x64/
+.vs/
 
 # Prerequisites
 *.d
