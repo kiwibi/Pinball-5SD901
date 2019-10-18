@@ -3,8 +3,8 @@
 #pragma once
 //---------------------------------------------------------------------
 #include <cmath>
-#include <SDL2/SDL.h>
-#include <SDL2/SDL_opengl.h>
+#include <SDL.h>
+#include <SDL_opengl.h>
 //#include <OpenGL/glu.h>
 //---------------------------------------------------------------------
 #define For(i,N) for (int (i) = 0; (i) < (N); (i)++)
