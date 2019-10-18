@@ -21,14 +21,14 @@
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'" Label="Configuration">
     <ConfigurationType>Application</ConfigurationType>
     <UseDebugLibraries>false</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
-    <CharacterSet>MultiByte</CharacterSet>
+    <CharacterSet>Unicode</CharacterSet>
   </PropertyGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.props" />
   <ImportGroup Label="ExtensionSettings">
@@ -47,14 +47,14 @@
     <IntDir>..\Build\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration)</TargetName>
     <IncludePath>\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>/Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\Build\</OutDir>
     <IntDir>..\Build\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration)</TargetName>
     <IncludePath>\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>/Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <LibraryPath>\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
