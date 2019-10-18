@@ -46,15 +46,15 @@
     <OutDir>..\Build\</OutDir>
     <IntDir>..\Build\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration)</TargetName>
-    <IncludePath>\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Projects\Pinball-5SD901\External\SDL2\include;\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Projects\Pinball-5SD901\External\SDL2\lib\x64;\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\Build\</OutDir>
     <IntDir>..\Build\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration)</TargetName>
-    <IncludePath>\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
-    <LibraryPath>\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <IncludePath>C:\Projects\Pinball-5SD901\External\SDL2\include;\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
+    <LibraryPath>C:\Projects\Pinball-5SD901\External\SDL2\lib\x64;\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -63,7 +63,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>\Pinball-5SD901\Pinball Game\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Projects\Pinball-5SD901\Pinball Game\Include;\Pinball-5SD901\Pinball Game\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4100;4189;4244;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
@@ -80,7 +80,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <TreatWarningAsError>true</TreatWarningAsError>
-      <AdditionalIncludeDirectories>\Pinball-5SD901\Pinball Game\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>C:\Projects\Pinball-5SD901\Pinball Game\Include;\Pinball-5SD901\Pinball Game\Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <DisableSpecificWarnings>4100;4189;4244;</DisableSpecificWarnings>
     </ClCompile>
     <Link>
