@@ -62,7 +62,7 @@ void Game::Draw(int deltaTime){
         glEnd();
     }*/
 	//--------------------------------------------Text
-	/*int a = mW - 300;
+	int a = mW - 300;
 	glColor3ub(255,0,0);
 	Draw_MtxText(a, mH - 4*24, "X = %4d  Y = %4d",
                  mMouseX,mMouseY);
@@ -73,7 +73,6 @@ void Game::Draw(int deltaTime){
                  deltaTime);
                  //printf("[ret = %u\n",ret););
 	//--------------------------------------------	
-    //mCounter++;
     //--------------------------------------------	
 }
 //---------------------------------------------------------------------
