@@ -1,6 +1,7 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 #include "Game.h"
+#include "/Pinball-5SD901/Pinball Game/Time.h"
 Game G;
 
 //----------------------------------
@@ -38,7 +39,9 @@ static void mainLoop (){
     SDL_Event event;
     bool quit = false;
     int key, state;
+    Time time;
     while (!quit) {
+       time.Update();
         //----------------------------------
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
@@ -58,9 +61,8 @@ static void mainLoop (){
 			}
         }
         //----------------------------------
-		G.Draw();
+		G.Draw(time.deltaTime);
         SDL_GL_SwapWindow(gScreen);
-        SDL_Delay(8);
         //----------------------------------
 	}
 }

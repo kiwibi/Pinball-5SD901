@@ -15,7 +15,7 @@ public:
     Game(void);
     //-------------------------------------------------------
     void  ChangeSize(int w, int h);
-    void  Draw();
+    void  Draw(int deltaTime);
     //-------------------------------------------------------
     void  NormalKeys(unsigned char key, int state);
     void  SpecialKeys(int key, int state);
