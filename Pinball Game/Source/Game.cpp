@@ -8,6 +8,7 @@
 //---------------------------------------------------------------------
 #include "Game.h"
 #include <stdio.h>
+
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game(){
@@ -34,9 +35,18 @@ void Game::Draw(void){
     //--------------------------------------------Clear
     glClear(GL_COLOR_BUFFER_BIT);
     glLoadIdentity();
-    
+	//--------------------------------------------Borders
+	glLineWidth(3);
+	glPointSize(3);
+
+	glBegin(GL_LINE_LOOP);
+	glColor3ub(255, 0, 0);   glVertex3f(10, 10, 0);  //left top
+	glColor3ub(127, 127, 0); glVertex3f(mW - 10, 10, 0); //right top
+	glColor3ub(0, 255, 0);   glVertex3f(mW - 10, mH - 10, 0); //right bottom
+	glColor3ub(0, 0, 255);   glVertex3f(10, mH - 10, 0);   //left bottom
+	glEnd();
     //--------------------------------------------Geometry
-    glLineWidth(3);
+    /*glLineWidth(3);
     glPointSize(10);
     
     int method[] = {GL_POINTS,GL_LINES,GL_LINE_STRIP,GL_LINE_LOOP,GL_POLYGON};
@@ -50,9 +60,9 @@ void Game::Draw(void){
         glColor3ub(0,255,0);   glVertex3f( 50+dx, 50+dy,0);
         glColor3ub(0,0,255);   glVertex3f( 50+dx,-50+dy,0);
         glEnd();
-    }
+    }*/
 	//--------------------------------------------Text
-	int a = mW - 300;
+	/*int a = mW - 300;
 	glColor3ub(255,0,0);
 	Draw_MtxText(a, mH - 4*24, "X = %4d  Y = %4d",
                  mMouseX,mMouseY);
@@ -60,10 +70,10 @@ void Game::Draw(void){
 	Draw_MtxText(a, mH - 3*24, "X = %4d  Y = %4d",
                  mMouseMotionX,mMouseMotionY);
     Draw_MtxText(a, mH - 2*24, "TIME = %7u",
-                 SDL_GetTicks());
-                 //printf("[ret = %u\n",ret););
+                 SDL_GetTicks());*/
+                 /*printf("[ret = %u\n",ret););*/
 	//--------------------------------------------	
-    mCounter++;
+    //mCounter++;
     //--------------------------------------------	
 }
 //---------------------------------------------------------------------

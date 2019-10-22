@@ -42,18 +42,6 @@ static void mainLoop (){
         //----------------------------------
 		while (SDL_PollEvent(&event)) {
 			switch (event.type) {
-					//Mouse
-				case SDL_MOUSEBUTTONDOWN:
-				case SDL_MOUSEBUTTONUP:
-					G.Mouse((int)event.button.button,
-							(int)event.button.state,
-							(int)event.button.x,
-							(int)event.button.y);
-                    break;
-                case SDL_MOUSEMOTION:
-                    G.MouseMotion((int)event.button.x,
-                                   (int)event.button.y);
-                    break;
 					//Keys
 				case SDL_KEYDOWN:
                     key   = event.key.keysym.sym;
