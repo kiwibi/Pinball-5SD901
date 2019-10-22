@@ -29,7 +29,7 @@ void Game::ChangeSize(int w, int h){
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
-void Game::Draw(void){
+void Game::Draw(int deltaTime){
     
     //--------------------------------------------Clear
     glClear(GL_COLOR_BUFFER_BIT);
@@ -60,7 +60,7 @@ void Game::Draw(void){
 	Draw_MtxText(a, mH - 3*24, "X = %4d  Y = %4d",
                  mMouseMotionX,mMouseMotionY);
     Draw_MtxText(a, mH - 2*24, "TIME = %7u",
-                 SDL_GetTicks());
+                 deltaTime);
                  //printf("[ret = %u\n",ret););
 	//--------------------------------------------	
     mCounter++;
