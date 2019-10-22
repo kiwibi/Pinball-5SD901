@@ -18,6 +18,7 @@ Game::Game(){
 	mW = 1280, mH = 720.f;
 	mMouseX = mMouseY = 0;
     mMouseButton = mMouseState = 0;
+    circle = Circle(50,50,8,100);
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -45,6 +46,9 @@ void Game::Draw(int deltaTime){
 	glColor3ub(0, 255, 0);   glVertex3f(mW - 10, mH - 10, 0); //right bottom
 	glColor3ub(0, 0, 255);   glVertex3f(10, mH - 10, 0);   //left bottom
 	glEnd();
+
+   //----------------------------------------------Ball
+   circle.Draw();
     //--------------------------------------------Geometry
     /*glLineWidth(3);
     glPointSize(10);
