@@ -40,6 +40,7 @@ static void mainLoop (){
     bool quit = false;
     int key, state;
     Time time;
+    int timeAcummumulator = 0;
     while (!quit) {
        time.Update();
         //----------------------------------
@@ -61,10 +62,15 @@ static void mainLoop (){
 			}
         }
         //----------------------------------
+      timeAcummumulator += time.deltaTime;
+      if (timeAcummumulator > 10)
+      {
       G.CheckCollision();
-      G.Update(time.deltaTime);
-		G.Draw(time.deltaTime);
-        SDL_GL_SwapWindow(gScreen);
+      G.Update(10);
+		G.Draw(10);
+      SDL_GL_SwapWindow(gScreen);
+      timeAcummumulator -= 10;
+      }
         //----------------------------------
 	}
 }
