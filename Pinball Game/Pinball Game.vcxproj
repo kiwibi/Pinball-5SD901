@@ -97,6 +97,7 @@
     <ClInclude Include="Include\Calculations.h" />
     <ClInclude Include="Include\Circle.h" />
     <ClInclude Include="Include\Game.h" />
+    <ClInclude Include="Include\Wall.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
@@ -106,6 +107,7 @@
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Time.cpp" />
+    <ClCompile Include="Source\Wall.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

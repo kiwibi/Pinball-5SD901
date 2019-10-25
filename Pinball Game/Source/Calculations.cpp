@@ -16,11 +16,18 @@ float Calculations::Dot(Vector2 A, Vector2 B)
 	return result;
 }
 
-Vector2 Calculations::Rotate(Vector2 A, float Radian)
+Vector2 Calculations::Rotate(Vector2 A, float radian)
 {
 	Vector2 result;
-	result.x = ((A.x * cosf(Radian)) - (A.y * sinf(Radian)));
-	result.y = ((A.x * sinf(Radian)) + (A.y * cosf(Radian)));
+	result.x = ((A.x * cosf(radian)) - (A.y * sinf(radian)));
+	result.y = ((A.x * sinf(radian)) + (A.y * cosf(radian)));
 	return result;
 }
 
+Vector2 Calculations::Subtraction(Vector2 LHS, Vector2 RHS)
+{
+   Vector2 Result;
+   Result.x = LHS.x - RHS.x;
+   Result.y = LHS.y - RHS.y;
+   return Result;
+}

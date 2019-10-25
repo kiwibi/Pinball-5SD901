@@ -12,12 +12,13 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game()
-   : mBall(Ball(50,50,8,20))
+   : mBall(Ball(50, 50, 8, 20)),
+     mWall(Wall(100, 100, 50, 50))
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
 	mCounter = 0;
-	mW = 1280, mH = 720.f;
+	mW = 480.0f, mH = 720.f;
 	mMouseX = mMouseY = 0;
    mMouseButton = mMouseState = 0;
 }
@@ -55,6 +56,8 @@ void Game::Draw(int deltaTime){
 	glColor3ub(0, 0, 255);   glVertex3f(10, mH - 10, 0);   //left bottom
 	glEnd();
 
+   //----------------------------------------------Wall
+   mWall.Draw();
    //----------------------------------------------Ball
    mBall.Draw();
     //--------------------------------------------Geometry
