@@ -1,0 +1,6 @@
+// Ball.h
+
+struct Ball
+{
+
+};
