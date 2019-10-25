@@ -11,10 +11,10 @@ Circle::Circle()
    mSegments = 0;
 }
 
-Circle::Circle(int posX, int posY, int radian, int segments)
+Circle::Circle(float radian, float segments)
 {
-   mPosX = posX;
-   mPosY = posY;
+   mPosX = 0;
+   mPosY = 0;
    mRadian = radian;
    mSegments = segments;
 }

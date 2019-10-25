@@ -11,14 +11,15 @@
 
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
-Game::Game(){
+Game::Game()
+   : mBall(Ball(50,50,8,20))
+{
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
 	mCounter = 0;
 	mW = 1280, mH = 720.f;
 	mMouseX = mMouseY = 0;
-    mMouseButton = mMouseState = 0;
-    circle = Circle(50,50,8,20);
+   mMouseButton = mMouseState = 0;
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -48,7 +49,8 @@ void Game::Draw(int deltaTime){
 	glEnd();
 
    //----------------------------------------------Ball
-   circle.Draw();
+   mBall.Update(deltaTime);
+   mBall.Draw();
     //--------------------------------------------Geometry
     /*glLineWidth(3);
     glPointSize(10);

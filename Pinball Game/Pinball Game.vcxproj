@@ -46,15 +46,17 @@
     <OutDir>..\Build\</OutDir>
     <IntDir>..\Build\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration)</TargetName>
-    <IncludePath>C:\Projects\Pinball-5SD901\External\SDL2\include;\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
+    <IncludePath>\Pinball-5SD901\Pinball Game\Include;C:\Projects\Pinball-5SD901\External\SDL2\include;\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Projects\Pinball-5SD901\External\SDL2\lib\x64;\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <SourcePath>\Pinball-5SD901\Pinball Game\Source;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <OutDir>..\Build\</OutDir>
     <IntDir>..\Build\$(ProjectName)\$(Configuration)\</IntDir>
     <TargetName>$(ProjectName).$(Configuration)</TargetName>
-    <IncludePath>C:\Projects\Pinball-5SD901\External\SDL2\include;\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
+    <IncludePath>\Pinball-5SD901\Pinball Game\Include;C:\Projects\Pinball-5SD901\External\SDL2\include;\Pinball-5SD901\External\SDL2\include;$(IncludePath)</IncludePath>
     <LibraryPath>C:\Projects\Pinball-5SD901\External\SDL2\lib\x64;\Pinball-5SD901\External\SDL2\lib\x64;$(LibraryPath)</LibraryPath>
+    <SourcePath>\Pinball-5SD901\Pinball Game\Source;$(SourcePath)</SourcePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <ClCompile>
@@ -91,16 +93,17 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Include\Ball.h" />
     <ClInclude Include="Include\Circle.h" />
     <ClInclude Include="Include\Game.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Source\Ball.cpp" />
     <ClCompile Include="Source\Circle.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\Main.cpp" />
     <ClCompile Include="Source\Time.cpp" />
-    <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
