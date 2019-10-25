@@ -1,7 +1,7 @@
 // Ball.cpp
 
-#include "Ball.h"
-#include "Circle.h"
+#include <ball.h>
+#include <Circle.h>
 
 Ball::Ball(float posX, float posY, float radian, float segments)
 {
