@@ -61,6 +61,7 @@ static void mainLoop (){
 			}
         }
         //----------------------------------
+      G.Update(time.deltaTime);
 		G.Draw(time.deltaTime);
         SDL_GL_SwapWindow(gScreen);
         //----------------------------------
