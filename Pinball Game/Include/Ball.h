@@ -4,6 +4,7 @@
 #define BALL_H_INCLUDE
 
 struct Circle;
+struct Wall;
 
 struct Ball
 {
@@ -15,6 +16,7 @@ struct Ball
    Ball(float posX, float posY, float radian, float segments);
    void Update(int deltaTime);
    void Collide();
+   bool CollisionCheck(Wall wall);
    void Draw();
 };
 

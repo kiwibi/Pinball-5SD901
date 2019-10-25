@@ -17,6 +17,9 @@ Wall::Wall(float startX, float startY, float endX, float endY)
 
 void Wall::Draw()
 {
+   glLineWidth(6);
+   glPointSize(6);
+
    glBegin(GL_LINE_LOOP);
    glVertex2f(mStartPos.x, mStartPos.y);
    glVertex2f(mEndPos.x, mEndPos.y);

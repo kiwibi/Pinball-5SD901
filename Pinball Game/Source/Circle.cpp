@@ -29,7 +29,7 @@ void Circle::Draw()
       float x = float(mRadian) * cosf(theta);
       float y = float(mRadian) * sinf(theta);
 
-      glVertex2f(x + float(mPosX), y + float(mPosY));
+      glColor3ub( -mPosY / 3, mPosX / 2, mPosY / 3); glVertex2f(x + float(mPosX), y + float(mPosY)); // Cool
    }
    glEnd();
 }

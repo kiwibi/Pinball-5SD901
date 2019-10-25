@@ -12,8 +12,9 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game()
-   : mBall(Ball(50, 50, 8, 20)),
-     mWall(Wall(100, 100, 50, 50))
+   : mBall(Ball(400, 50, 8, 20)),
+     mWall1(Wall(300, 710, 468, 530)),
+     mWall2(Wall(12, 530, 180, 710))
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
@@ -30,6 +31,17 @@ void Game::ChangeSize(int w, int h){
 	glMatrixMode(GL_PROJECTION); glLoadIdentity(); // Reset The Projection Matrix
 	glOrtho(0.0f,mW,mH,0.0f,-1.0f,.0f);           // Create Ortho View (0,0 At Top Left)
 	glMatrixMode(GL_MODELVIEW); glLoadIdentity();  // Reset The Modelview Matrix
+}
+//---------------------------------------------------------------------
+//---------------------------------------------------------------------
+void Game::CheckCollision()
+{
+   if (mBall.CollisionCheck(mWall1) || mBall.CollisionCheck(mWall2))
+   {
+      float memX = mBall.mSpeedX;
+      mBall.mSpeedX = mBall.mSpeedY;
+      mBall.mSpeedY = memX;
+   }
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -51,13 +63,14 @@ void Game::Draw(int deltaTime){
 
 	glBegin(GL_LINE_LOOP);
 	glColor3ub(255, 0, 0);   glVertex3f(10, 10, 0);  //left top
-	glColor3ub(127, 127, 0); glVertex3f(mW - 10, 10, 0); //right top
+	glColor3ub(255, 255, 0); glVertex3f(mW - 10, 10, 0); //right top
 	glColor3ub(0, 255, 0);   glVertex3f(mW - 10, mH - 10, 0); //right bottom
 	glColor3ub(0, 0, 255);   glVertex3f(10, mH - 10, 0);   //left bottom
 	glEnd();
 
    //----------------------------------------------Wall
-   mWall.Draw();
+   mWall1.Draw();
+   mWall2.Draw();
    //----------------------------------------------Ball
    mBall.Draw();
     //--------------------------------------------Geometry
