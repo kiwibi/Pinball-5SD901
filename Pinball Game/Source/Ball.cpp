@@ -16,7 +16,7 @@ void Ball::Update(int deltaTime)
    mPosX += mSpeedX * deltaTime / 60;
    mPosY += mSpeedY * deltaTime/ 60;
 
-   if (mPosY > 700)
+   if (mPosY > 700 && mSpeedY > 0)
       mSpeedY *= -1;
 
    mCircle->mPosX = mPosX;
