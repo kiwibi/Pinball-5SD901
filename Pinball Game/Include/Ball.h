@@ -12,10 +12,9 @@ struct Ball
    float mSpeedX; float mSpeedY;
    Circle* mCircle;
 
-   //gravity? It's a constant so it could be somewhere else in the end.
-
    Ball(float posX, float posY, float radian, float segments);
    void Update(int deltaTime);
+   void Collide();
    void Draw();
 };
 
