@@ -94,12 +94,14 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClInclude Include="Include\Ball.h" />
+    <ClInclude Include="Include\Calculations.h" />
     <ClInclude Include="Include\Circle.h" />
     <ClInclude Include="Include\Game.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Source\Ball.cpp" />
+    <ClCompile Include="Source\Calculations.cpp" />
     <ClCompile Include="Source\Circle.cpp" />
     <ClCompile Include="Source\Game.cpp" />
     <ClCompile Include="Source\Main.cpp" />
