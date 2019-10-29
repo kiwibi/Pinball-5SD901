@@ -8,8 +8,9 @@ Ball::Ball(float posX, float posY, float radian, float segments)
 {
    mPos.x = posX;
    mPos.y = posY;
-   mSpeed = { 0 , 10 }; //
+   mSpeed = { 0 , 0 }; //
    mCircle = new Circle(radian, segments);
+   mBouncy = 0.8f;
 }
 
 void Ball::Update(int deltaTime)
@@ -19,11 +20,11 @@ void Ball::Update(int deltaTime)
    mSpeed.y += 1.0f * deltaTime / 60;
 
    if (mPos.y > 700 && mSpeed.y > 0 || mPos.y < 18 && mSpeed.y < 0)
-      mSpeed.y *= -1;
+      mSpeed.y *= -mBouncy;
 
    if (mPos.x > 462 && mSpeed.x > 0 ||
        mPos.x < 18 && mSpeed.x < 0)
-      mSpeed.x *= -1;
+      mSpeed.x *= -mBouncy;
 
    mCircle->mPos.x = mPos.x;
    mCircle->mPos.y = mPos.y;
@@ -40,6 +41,7 @@ void Ball::Collide(Vector2 wallNorm)
 
    float angle = Calculations::CollisionAngle(mSpeed, wallNorm);
    mSpeed = Calculations::Rotate(mSpeed, angle);
+   mSpeed = Calculations::Multiplication(mSpeed, mBouncy);
 }
 
 float max(float rhs, float lhs)

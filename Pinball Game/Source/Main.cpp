@@ -56,6 +56,11 @@ static void mainLoop (){
 					if (key < 128) G.NormalKeys(key,state);
 					else G.SpecialKeys(key,state);
 					break;
+            case SDL_KEYUP:
+               key = event.key.keysym.sym;
+               state = SDL_GetModState();
+               G.SpecialKeys(key, KEY_RELEASED);
+               break;
 					//---------------------------------
 				case SDL_QUIT: quit = true; break;
 				default: break;

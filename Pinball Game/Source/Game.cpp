@@ -22,6 +22,9 @@ Game::Game()
 	mW = 480.0f, mH = 720.f;
 	mMouseX = mMouseY = 0;
    mMouseButton = mMouseState = 0;
+
+   mLeft = KEY_RELEASED;
+   mRight = KEY_RELEASED;
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -120,12 +123,56 @@ void Game::NormalKeys(unsigned char key, int state){
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 void Game::SpecialKeys(int key, int state){
-    if (key == SDLK_LEFT){}
-    if (key == SDLK_RIGHT){}
+    if (key == SDLK_LEFT ){
+       switch (mLeft){
+          case KEY_RELEASED:
+            mLeft = KEY_DOWN;
+            // Changle flipper state. Fling balls
+            break;
+          
+          //case KEY_PRESSED:
+          //   mLeft = KEY_DOWN;
+          //   break;
+          
+          case KEY_DOWN:
+             // Keep flipper in upright.
+             break;
+       }
+
+    }
+    if (key == SDLK_RIGHT){
+       switch (mRight) {
+       case KEY_RELEASED:
+          mRight = KEY_DOWN;
+          // Changle flipper state. Fling ball
+          break;
+
+          //case KEY_PRESSED:
+          //   mLeft = KEY_DOWN;
+          //   break;
+
+       case KEY_DOWN:
+          // Keep flipper in upright.
+          break;
+       }
+    }
     if (key == SDLK_UP){}
     if (key == SDLK_DOWN){}
 }
 //---------------------------------------------------------------------
+void Game::SpecialKeys(int key, KeyState state) {
+   if (key == SDLK_LEFT) {
+      mLeft = KEY_RELEASED;
+      // Other key released things
+   }
+   if (key == SDLK_RIGHT) {
+      mRight = KEY_RELEASED;
+      // Other key released things
+
+   }
+   if (key == SDLK_UP) {}
+   if (key == SDLK_DOWN) {}
+}
 //---------------------------------------------------------------------
 void Game::Mouse(int button, int state, int x, int y){
 	mMouseButton = button;//SDL_BUTTON_LEFT/SDL_BUTTON_MIDDLE/SDL_BUTTON_RIGHT

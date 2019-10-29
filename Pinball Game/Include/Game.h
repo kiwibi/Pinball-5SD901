@@ -11,6 +11,18 @@
 //#include <OpenGL/glu.h>
 //---------------------------------------------------------------------
 #define For(i,N) for (int (i) = 0; (i) < (N); (i)++)
+
+
+
+//---------------------------------------------------------------------
+
+enum KeyState {
+   KEY_DOWN,
+   KEY_PRESSED,
+   KEY_RELEASED,
+   DEFAULT
+};
+
 //---------------------------------------------------------------------
 class Game {
 public:
@@ -24,6 +36,7 @@ public:
     //-------------------------------------------------------
     void  NormalKeys(unsigned char key, int state);
     void  SpecialKeys(int key, int state);
+    void SpecialKeys(int key, KeyState state);
     void  Mouse(int button, int state, int x, int y);
     void  MouseMotion(int x, int y);
     //-------------------------------------------------------
@@ -42,6 +55,9 @@ public:
     Ball mBall;
     Wall mWall1;
     Wall mWall2;
+
+    KeyState mLeft;
+    KeyState mRight;
 };
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
