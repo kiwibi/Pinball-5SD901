@@ -8,8 +8,8 @@ Flipper::Flipper(float posX, float posY, float length, float direction)
 
    mState = DOWN;
 
-   Vector2 line1 = { 10, 20};
-   Vector2 line2 = { 10, 20};
+   Vector2 line1 = { length, 00};
+   Vector2 line2 = { 0, 20};
    mPaddle = new Paddle(line1, line2);
    mPaddle->mPos = mPos;
 }

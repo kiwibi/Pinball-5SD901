@@ -13,10 +13,10 @@
 //---------------------------------------------------------------------
 Game::Game()
    : mBall(Ball(460, 50, 8, 20)),
-     mWall1(Wall(300, 710, 468, 530)),
-     mWall2(Wall(12, 530, 180, 710)),
-     mFlipper1(10,10,20,0),
-     mFlipper2(100,100,20,float(C_PI)) // Float(C_PI) should hopefully make the paddle point the opposite direction
+     mWall1(Wall(11, 530, 150, 650)),
+     mWall2(Wall(468,530,330,650)),
+     mFlipper1(150,650,70,0),
+     mFlipper2(330,650,-70,0) // Float(C_PI) should hopefully make the paddle point the opposite direction
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();

@@ -22,7 +22,7 @@ Circle::Circle(float radian, float segments)
 
 void Circle::Draw()
 {
-   float factor = 1 - (mPos.x/480);
+   float factor = 1 - (mPos.x/480); // This makes sure that blue colour is low on the high x end
    glBegin(GL_TRIANGLE_FAN);
    For (i,mSegments)
    {
