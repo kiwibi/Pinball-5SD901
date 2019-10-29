@@ -14,9 +14,9 @@ Ball::Ball(float posX, float posY, float radian, float segments)
 
 void Ball::Update(int deltaTime)
 {
-   mSpeedY += 1.0f * deltaTime / 60;
    mPosX += mSpeedX * deltaTime / 60;
    mPosY += mSpeedY * deltaTime/ 60;
+   mSpeedY += 1.0f * deltaTime / 60;
 
    if (mPosY > 700 && mSpeedY > 0)
       mSpeedY *= -1;
