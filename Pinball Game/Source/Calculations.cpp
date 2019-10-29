@@ -70,5 +70,6 @@ float Calculations::CollisionAngle(Vector2 lhs, Vector2 rhs)
    float lhsMagnitude = Magnitude(lhs);
    float rhsMagnitude = Magnitude(rhs);
    float result = acosf(( dot / ( lhsMagnitude * rhsMagnitude ) ));
+
    return result;
 }

@@ -11,7 +11,7 @@ Ball::Ball(float posX, float posY, float radian, float segments)
    mPos.y = posY;
    mSpeed = { 4 , 0 }; //
    mCircle = new Circle(radian, segments);
-   mBouncy = 0.8f;
+   mBouncy = 0.0f;
 }
 
 void Ball::Update(int deltaTime)
@@ -39,9 +39,11 @@ void Ball::Draw()
 
 void Ball::Collide(Vector2 wallNorm)
 {
-
-   float angle = (Calculations::CollisionAngle(mSpeed, wallNorm));
-   mSpeed = Calculations::Rotate(mSpeed, angle);
+	float disatanceAlongNormal = Calculations::Dot(mSpeed, wallNorm);
+	mSpeed.x -= 2.0f * disatanceAlongNormal * wallNorm.x;
+	mSpeed.y -= 2.0f * disatanceAlongNormal * wallNorm.y;
+   //float angle = (Calculations::CollisionAngle(mSpeed, wallNorm));
+   //mSpeed = Calculations::Rotate(mSpeed, angle);
    mSpeed = Calculations::Multiplication(mSpeed, mBouncy);
 }
 
