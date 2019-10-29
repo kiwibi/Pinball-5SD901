@@ -28,6 +28,8 @@ struct Calculations
    static Vector2 Multiplication(Vector2 LHS, float RHS);   // Multiplies a vector by a scalar
 
    static float CollisionAngle(Vector2 lhs, Vector2 rhs);   // Gives the angle between to vector2's.
+
+   static float Clamp(float a, float min, float max);
 };
 
 #endif // !CALCULATIONS_H_INCLUDED
