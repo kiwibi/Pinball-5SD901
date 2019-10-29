@@ -1,15 +1,18 @@
 #include "..\Include\Flipper.h"
 
-Flipper::Flipper(float posX, float posY, float endPosX, float endPosY)
+Flipper::Flipper(float posX, float posY,
+                 float endPosX, float endPosY,
+                 float botPosX, float botPosY)
 {
-   mPos.x = posX; mPos.y = posY;
-   mLine = { endPosX, endPosY };
-   mState = DOWN;
-   Vector2 line2 = { posX, 20 };
-   mPaddle = new Paddle(mLine, line2);
-   mPaddle->mPos = mPos;
+   mAnchorPos = {posX, posY};
+   mLine1 = { endPosX, endPosY };
+   mLine2 = { botPosX, botPosY };
 
-   Vector2 temp = Calculations::Subtraction(mPos, mLine);
+   mState = DOWN;
+   mPaddle = new Paddle(mLine1, mLine2);
+   mPaddle->mPos = mAnchorPos;
+
+   Vector2 temp = Calculations::Subtraction(mAnchorPos, mLine1);
 
    mNormal = Calculations::Rotate(Calculations::Normalize(temp), C_PI / 2.0f);
 
@@ -22,7 +25,7 @@ Flipper::Flipper(float posX, float posY, float endPosX, float endPosY)
 void Flipper::Update(int deltaTime)
 {
 
-   mPaddle->mPos = mPos;
+   mPaddle->mPos = mAnchorPos;
 }
 
 void Flipper::Draw()

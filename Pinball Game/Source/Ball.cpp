@@ -9,7 +9,7 @@ Ball::Ball(float posX, float posY, float radian, float segments)
 {
    mPos.x = posX;
    mPos.y = posY;
-   mSpeed = { 0 , 0 }; //
+   mSpeed = { 4 , 0 }; //
    mCircle = new Circle(radian, segments);
    mBouncy = 0.8f;
 }
@@ -40,7 +40,7 @@ void Ball::Draw()
 void Ball::Collide(Vector2 wallNorm)
 {
 
-   float angle = Calculations::CollisionAngle(mSpeed, wallNorm);
+   float angle = (Calculations::CollisionAngle(mSpeed, wallNorm));
    mSpeed = Calculations::Rotate(mSpeed, angle);
    mSpeed = Calculations::Multiplication(mSpeed, mBouncy);
 }
@@ -97,17 +97,17 @@ bool Ball::CollisionCheck(Wall wall)
 
 bool Ball::CollisionCheck(Flipper flipper)
 {
-   float maxX = max(flipper.mPos.x, flipper.mLine.x);
-   float minX = min(flipper.mPos.x, flipper.mLine.x);
-   float maxY = max(flipper.mPos.y, flipper.mLine.y);
-   float minY = min(flipper.mPos.y, flipper.mLine.y);
+   float maxX = max(flipper.mAnchorPos.x, flipper.mLine1.x);
+   float minX = min(flipper.mAnchorPos.x, flipper.mLine1.x);
+   float maxY = max(flipper.mAnchorPos.y, flipper.mLine1.y);
+   float minY = min(flipper.mAnchorPos.y, flipper.mLine1.y);
 
    // The naming here succs, but I can't come upp with a better alternative.
-   Vector2 pa = Calculations::Subtraction(mPos, flipper.mPos); //ballPos - wall.mStartPos;
-   Vector2 wallDir = ( Calculations::Subtraction(flipper.mLine, flipper.mPos) );
+   Vector2 pa = Calculations::Subtraction(mPos, flipper.mAnchorPos); //ballPos - wall.mStartPos;
+   Vector2 wallDir = ( Calculations::Subtraction(flipper.mLine1, flipper.mAnchorPos) );
    wallDir = Calculations::Normalize(wallDir);
    float d = Calculations::Dot(pa, wallDir);//pa.dot(abDir);
-   Vector2 D = ( Calculations::Addition(flipper.mPos, Calculations::Multiplication(wallDir, d)) );
+   Vector2 D = ( Calculations::Addition(flipper.mAnchorPos, Calculations::Multiplication(wallDir, d)) );
 
    // If D is outside of of min max bounds set it to be inside bounds.
 

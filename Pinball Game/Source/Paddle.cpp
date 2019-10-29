@@ -16,6 +16,6 @@ void Paddle::Draw()
    glColor3ub(255,255,255);
    glVertex2f(mPos.x, mPos.y);
    glVertex2f(mLine1.x, mLine1.y);
-   glVertex2f(mLine2.x + mPos.x, mLine2.y + mPos.y);
+   glVertex2f(mLine2.x, mLine2.y);
    glEnd();
 }
