@@ -25,6 +25,7 @@ struct Ball
    bool CollisionCheck(Wall wall);
    bool CollisionCheck(Flipper flipper);
    void Draw();
+   void Reset();
 };
 
 #endif // !BALL_H_INCLUDE

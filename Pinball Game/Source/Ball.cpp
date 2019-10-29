@@ -20,8 +20,10 @@ void Ball::Update(int deltaTime)
    mPos.y += mSpeed.y * deltaTime/ 60;
    mSpeed.y += 1.0f * deltaTime / 60;
 
-   if (mPos.y > 700 && mSpeed.y > 0 || mPos.y < 18 && mSpeed.y < 0)
+   if (mPos.y < 18 && mSpeed.y < 0)
       mSpeed.y *= -mBouncy;
+   if (mPos.y > 700 && mSpeed.y > 0)
+	   Reset();
 
    if (mPos.x > 462 && mSpeed.x > 0 ||
        mPos.x < 18 && mSpeed.x < 0)
@@ -139,3 +141,12 @@ bool Ball::CollisionCheck(Flipper flipper)
 
    //return intersect(circle, D);
 };
+
+void Ball::Reset()
+{
+	mPos.x = 50;
+	mPos.y = 50;
+	mSpeed = { 0 , 0 };
+	mCircle->mPos.x = mPos.x;
+	mCircle->mPos.y = mPos.y;
+}
