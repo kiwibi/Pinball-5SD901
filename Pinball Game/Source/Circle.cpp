@@ -1,20 +1,21 @@
 // Circle.cpp
 
 #include "circle.h"
+#include <SDL_opengl.h>
 #include <cmath>
 
 Circle::Circle()
 {
-   mPosX = 0;
-   mPosY = 0;
+   mPos.x = 0;
+   mPos.y = 0;
    mRadian = 0;
    mSegments = 0;
 }
 
 Circle::Circle(float radian, float segments)
 {
-   mPosX = 0;
-   mPosY = 0;
+   mPos.x = 0;
+   mPos.y = 0;
    mRadian = radian;
    mSegments = segments;
 }
@@ -29,7 +30,7 @@ void Circle::Draw()
       float x = float(mRadian) * cosf(theta);
       float y = float(mRadian) * sinf(theta);
 
-      glColor3ub( -mPosY / 3, mPosX / 2, mPosY / 3); glVertex2f(x + float(mPosX), y + float(mPosY)); // Cool
+      glColor3ub( -mPos.y / 3, mPos.x / 2, mPos.y / 3); glVertex2f(x + float(mPos.x), y + float(mPos.y)); // Cool
    }
    glEnd();
 }

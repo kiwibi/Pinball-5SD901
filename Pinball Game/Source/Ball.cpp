@@ -3,30 +3,30 @@
 #include <ball.h>
 #include <Circle.h>
 #include <Wall.h>
-#include <Calculations.h>
 
 Ball::Ball(float posX, float posY, float radian, float segments)
 {
-   mPosX = posX; mPosY = posY;
-   mSpeedX = 0; mSpeedY = 0;
+   mPos.x = posX;
+   mPos.y = posY;
+   mSpeed = { 0 , 10 }; //
    mCircle = new Circle(radian, segments);
 }
 
 void Ball::Update(int deltaTime)
 {
-   mPosX += mSpeedX * deltaTime / 60;
-   mPosY += mSpeedY * deltaTime/ 60;
-   mSpeedY += 1.0f * deltaTime / 60;
+   mPos.x += mSpeed.x * deltaTime / 60;
+   mPos.y += mSpeed.y * deltaTime/ 60;
+   mSpeed.y += 1.0f * deltaTime / 60;
 
-   if (mPosY > 700 && mSpeedY > 0)
-      mSpeedY *= -1;
+   if (mPos.y > 700 && mSpeed.y > 0 || mPos.y < 18 && mSpeed.y < 0)
+      mSpeed.y *= -1;
 
-   if (mPosX > 462 && mSpeedX > 0 ||
-       mPosX < 18 && mSpeedX < 0)
-      mSpeedX *= -1;
+   if (mPos.x > 462 && mSpeed.x > 0 ||
+       mPos.x < 18 && mSpeed.x < 0)
+      mSpeed.x *= -1;
 
-   mCircle->mPosX = mPosX;
-   mCircle->mPosY = mPosY;
+   mCircle->mPos.x = mPos.x;
+   mCircle->mPos.y = mPos.y;
    return;
 }
 
@@ -35,9 +35,11 @@ void Ball::Draw()
    mCircle->Draw();
 }
 
-void Ball::Collide()
+void Ball::Collide(Vector2 wallNorm)
 {
-   
+
+   float angle = Calculations::CollisionAngle(mSpeed, wallNorm);
+   mSpeed = Calculations::Rotate(mSpeed, angle);
 }
 
 float max(float rhs, float lhs)
@@ -52,17 +54,13 @@ float min(float rhs, float lhs)
 
 bool Ball::CollisionCheck(Wall wall)
 {
-   Vector2 ballPos;
-   ballPos.x = mPosX;
-   ballPos.y = mPosY;
-
    float maxX = max(wall.mStartPos.x, wall.mEndPos.x);
    float minX = min(wall.mStartPos.x, wall.mEndPos.x);
    float maxY = max(wall.mStartPos.y, wall.mEndPos.y);
    float minY = min(wall.mStartPos.y, wall.mEndPos.y);
 
    // The naming here succs, but I can't come upp with a better alternative.
-   Vector2 pa = Calculations::Subtraction(ballPos, wall.mStartPos); //ballPos - wall.mStartPos;
+   Vector2 pa = Calculations::Subtraction(mPos, wall.mStartPos); //ballPos - wall.mStartPos;
    Vector2 wallDir = ( Calculations::Subtraction(wall.mEndPos, wall.mStartPos));
    wallDir = Calculations::Normalize(wallDir);
    float d = Calculations::Dot(pa, wallDir);//pa.dot(abDir);
@@ -85,7 +83,7 @@ bool Ball::CollisionCheck(Wall wall)
    if (D.y > maxY)
       D.y = maxY;
 
-   Vector2 test = Calculations::Subtraction(D, ballPos);
+   Vector2 test = Calculations::Subtraction(D, mPos);
 
    float distance = Calculations::Magnitude(test);
 

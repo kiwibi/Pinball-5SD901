@@ -63,3 +63,12 @@ Vector2 Calculations::Multiplication(Vector2 LHS, float RHS)
    result.y = LHS.y * RHS;
    return result;
 }
+
+float Calculations::CollisionAngle(Vector2 lhs, Vector2 rhs)
+{
+   float dot = Dot(lhs, rhs);
+   float lhsMagnitude = Magnitude(lhs);
+   float rhsMagnitude = Magnitude(rhs);
+   float result = acosf(( dot / ( lhsMagnitude * rhsMagnitude ) ));
+   return result;
+}

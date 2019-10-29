@@ -12,7 +12,7 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game()
-   : mBall(Ball(400, 50, 8, 20)),
+   : mBall(Ball(320, 50, 8, 20)),
      mWall1(Wall(300, 710, 468, 530)),
      mWall2(Wall(12, 530, 180, 710))
 {
@@ -36,12 +36,20 @@ void Game::ChangeSize(int w, int h){
 //---------------------------------------------------------------------
 void Game::CheckCollision()
 {
-   if (mBall.CollisionCheck(mWall1) || mBall.CollisionCheck(mWall2))
+   if (mBall.CollisionCheck(mWall1))
+   {
+      mBall.Collide(mWall1.mNormal);
+   }
+   else if ( mBall.CollisionCheck(mWall2) )
+   {
+      mBall.Collide(mWall2.mNormal);
+   }
+   /*if (mBall.CollisionCheck(mWall1) || mBall.CollisionCheck(mWall2))
    {
       float memX = mBall.mSpeedX;
       mBall.mSpeedX = mBall.mSpeedY;
       mBall.mSpeedY = memX;
-   }
+   }*/
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -93,10 +101,10 @@ void Game::Draw(int deltaTime){
 	int a = mW - 300;
 	glColor3ub(255,0,0);
 	Draw_MtxText(a, mH - 4*24, "X = %4d  Y = %4d",
-                 mMouseX,mMouseY);
+                 int(mBall.mSpeed.x),int(mBall.mSpeed.y));
 	glColor3ub(100,100,220);
 	Draw_MtxText(a, mH - 3*24, "X = %4d  Y = %4d",
-                 mMouseMotionX,mMouseMotionY);
+                int(mBall.mPos.x), int(mBall.mPos.y));
     Draw_MtxText(a, mH - 2*24, "TIME = %7u",
                  deltaTime);
                  //printf("[ret = %u\n",ret););
