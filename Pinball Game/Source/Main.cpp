@@ -63,14 +63,16 @@ static void mainLoop (){
         }
         //----------------------------------
       timeAcummumulator += time.deltaTime;
-      if (timeAcummumulator > 10)
+      while (timeAcummumulator > 1)
       {
       G.CheckCollision();
-      G.Update(10);
-		G.Draw(10);
-      SDL_GL_SwapWindow(gScreen);
-      timeAcummumulator -= 10;
+      G.Update(1);
+      timeAcummumulator -= 1;
       }
+
+      G.Draw(time.deltaTime);
+      SDL_GL_SwapWindow(gScreen);
+
         //----------------------------------
 	}
 }

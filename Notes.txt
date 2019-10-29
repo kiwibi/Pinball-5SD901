@@ -1,0 +1,3 @@
+Collision handling. Calculate angle the ball hits slopes whit.
+
+Player input. Launch ball.
