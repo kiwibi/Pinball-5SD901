@@ -22,6 +22,7 @@ Circle::Circle(float radian, float segments)
 
 void Circle::Draw()
 {
+   float factor = 1 - (mPos.x/480);
    glBegin(GL_TRIANGLE_FAN);
    For (i,mSegments)
    {
@@ -30,7 +31,12 @@ void Circle::Draw()
       float x = float(mRadian) * cosf(theta);
       float y = float(mRadian) * sinf(theta);
 
-      glColor3ub( -mPos.y / 3, mPos.x / 2, mPos.y / 3); glVertex2f(x + float(mPos.x), y + float(mPos.y)); // Cool
+      glColor3ub( -mPos.y / 3, mPos.x / 2, (mPos.y / 3) * (factor)); glVertex2f(x + float(mPos.x), y + float(mPos.y)); // Cool
    }
    glEnd();
 }
+
+// x = 0
+// factor = 1
+// x = 480
+// factor = 0

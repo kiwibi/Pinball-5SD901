@@ -12,9 +12,11 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game()
-   : mBall(Ball(320, 50, 8, 20)),
+   : mBall(Ball(460, 50, 8, 20)),
      mWall1(Wall(300, 710, 468, 530)),
-     mWall2(Wall(12, 530, 180, 710))
+     mWall2(Wall(12, 530, 180, 710)),
+     mFlipper1(10,10,20,0),
+     mFlipper2(100,100,20,float(C_PI)) // Float(C_PI) should hopefully make the paddle point the opposite direction
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
@@ -60,6 +62,9 @@ void Game::Update(int deltaTime)
 {
    // Update Ball
    mBall.Update(deltaTime);
+   // Update Flippers
+   mFlipper1.Update(deltaTime);
+   mFlipper2.Update(deltaTime);
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -79,11 +84,14 @@ void Game::Draw(int deltaTime){
 	glColor3ub(0, 0, 255);   glVertex3f(10, mH - 10, 0);   //left bottom
 	glEnd();
 
-   //----------------------------------------------Wall
+   //----------------------------------------------Walls
    mWall1.Draw();
    mWall2.Draw();
    //----------------------------------------------Ball
    mBall.Draw();
+   //----------------------------------------------Flippers
+   mFlipper1.Draw();
+   mFlipper2.Draw();
     //--------------------------------------------Geometry
     /*glLineWidth(3);
     glPointSize(10);

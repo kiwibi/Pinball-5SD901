@@ -7,6 +7,7 @@
 #include <SDL_opengl.h>
 #include <Ball.h>
 #include <Wall.h>
+#include <Flipper.h>
 
 //#include <OpenGL/glu.h>
 //---------------------------------------------------------------------
@@ -55,6 +56,9 @@ public:
     Ball mBall;
     Wall mWall1;
     Wall mWall2;
+    Flipper mFlipper1;
+    Flipper mFlipper2;
+
 
     KeyState mLeft;
     KeyState mRight;
