@@ -1,3 +1,7 @@
 Collision handling. Calculate angle the ball hits slopes.
 
 Player input. Launch ball.
+
+List of collidable objects to loop through
+
+Add the intended objects to bounce with
