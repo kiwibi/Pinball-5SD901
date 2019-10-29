@@ -11,7 +11,7 @@ Ball::Ball(float posX, float posY, float radian, float segments)
    mPos.y = posY;
    mSpeed = { 0 , 0 }; //
    mCircle = new Circle(radian, segments);
-   mBouncy = 0.8f;
+   mBouncy = 0.7f;
 }
 
 void Ball::Update(int deltaTime)

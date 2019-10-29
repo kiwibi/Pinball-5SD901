@@ -21,7 +21,7 @@ Game::Game()
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
 	mCounter = 0;
-	mW = 480.0f, mH = 720.f;
+	mW = 900.0f, mH = 720.f;
 	mMouseX = mMouseY = 0;
    mMouseButton = mMouseState = 0;
 
@@ -69,11 +69,11 @@ void Game::CheckCollision(int deltaTime)
 //---------------------------------------------------------------------
 void Game::Update(int deltaTime)
 {
-   // Update Ball
-   mBall.Update(deltaTime);
    // Update Flippers
    mFlipper1.Update(deltaTime);
    mFlipper2.Update(deltaTime);
+   // Update Ball
+   mBall.Update(deltaTime);
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
@@ -88,8 +88,8 @@ void Game::Draw(int deltaTime){
 
 	glBegin(GL_LINE_LOOP);
 	glColor3ub(255, 0, 0);   glVertex3f(10, 10, 0);  //left top
-	glColor3ub(255, 255, 0); glVertex3f(mW - 10, 10, 0); //right top
-	glColor3ub(0, 255, 0);   glVertex3f(mW - 10, mH - 10, 0); //right bottom
+	glColor3ub(255, 255, 0); glVertex3f(470, 10, 0); //right top
+	glColor3ub(0, 255, 0);   glVertex3f(470, mH - 10, 0); //right bottom
 	glColor3ub(0, 0, 255);   glVertex3f(10, mH - 10, 0);   //left bottom
 	glEnd();
 
@@ -182,10 +182,12 @@ void Game::SpecialKeys(int key, int state){
 void Game::SpecialKeys(int key, KeyState state) {
    if (key == SDLK_LEFT) {
       mLeft = KEY_RELEASED;
+      mFlipper1.mState = DOWN;
       // Other key released things
    }
    if (key == SDLK_RIGHT) {
       mRight = KEY_RELEASED;
+      mFlipper2.mState = DOWN;
       // Other key released things
 
    }
