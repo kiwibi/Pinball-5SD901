@@ -12,11 +12,11 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game()
-   : mBall(Ball(460, 50, 8, 20)),
+   : mBall(Ball(370, 50, 8, 20)),
      mWall1(Wall(11, 530, 150, 650)),
      mWall2(Wall(468,530,330,650)),
-     mFlipper1(150,650,70,0),
-     mFlipper2(330,650,-70,0) // Float(C_PI) should hopefully make the paddle point the opposite direction
+     mFlipper1(150,650,70,650),
+     mFlipper2(330,650,-70,650) // Float(C_PI) should hopefully make the paddle point the opposite direction
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
@@ -48,6 +48,15 @@ void Game::CheckCollision()
    else if ( mBall.CollisionCheck(mWall2) )
    {
       mBall.Collide(mWall2.mNormal);
+   }
+
+   if (mBall.CollisionCheck(mFlipper1))
+   {
+      mBall.Collide(mFlipper1.mNormal);
+   }
+   else if (mBall.CollisionCheck(mFlipper2))
+   {
+      mBall.Collide(mFlipper2.mNormal);
    }
    /*if (mBall.CollisionCheck(mWall1) || mBall.CollisionCheck(mWall2))
    {

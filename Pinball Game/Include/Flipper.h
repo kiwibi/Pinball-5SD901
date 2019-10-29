@@ -16,13 +16,13 @@ enum FlipperState
 struct Flipper // This is the game logic represantation of the paddle
 {
    Vector2 mPos;
-   float mLength;
-   float mDirection;
+   Vector2 mNormal;
+   Vector2 mLine;
    Paddle* mPaddle;
 
    FlipperState mState;
 
-   Flipper(float posX, float posY, float length, float direction); // this should setup it's graphical counter part as well
+   Flipper(float posX, float posY, float endPosX, float endPosY); // this should setup it's graphical counter part as well
 
    void Update(int deltaTime);
    void Draw();

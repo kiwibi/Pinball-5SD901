@@ -7,6 +7,7 @@
 
 struct Circle;
 struct Wall;
+struct Flipper;
 //struct Vector2;
 
 struct Ball
@@ -22,6 +23,7 @@ struct Ball
    void Update(int deltaTime);
    void Collide(Vector2 wallNorm);
    bool CollisionCheck(Wall wall);
+   bool CollisionCheck(Flipper flipper);
    void Draw();
 };
 

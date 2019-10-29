@@ -14,6 +14,11 @@ Wall::Wall(float startX, float startY, float endX, float endY)
    Vector2 temp = Calculations::Subtraction(mStartPos, mEndPos);
 
    mNormal = Calculations::Rotate(Calculations::Normalize(temp), C_PI / 2.0f);
+
+   if (mNormal.y > 0)
+   {
+      mNormal = Calculations::Rotate(mNormal, C_PI);
+   }
 };
 
 void Wall::Draw()

@@ -3,6 +3,7 @@
 #include <ball.h>
 #include <Circle.h>
 #include <Wall.h>
+#include <Flipper.h>
 
 Ball::Ball(float posX, float posY, float radian, float segments)
 {
@@ -63,10 +64,10 @@ bool Ball::CollisionCheck(Wall wall)
 
    // The naming here succs, but I can't come upp with a better alternative.
    Vector2 pa = Calculations::Subtraction(mPos, wall.mStartPos); //ballPos - wall.mStartPos;
-   Vector2 wallDir = ( Calculations::Subtraction(wall.mEndPos, wall.mStartPos));
+   Vector2 wallDir = ( Calculations::Subtraction(wall.mEndPos, wall.mStartPos) );
    wallDir = Calculations::Normalize(wallDir);
    float d = Calculations::Dot(pa, wallDir);//pa.dot(abDir);
-   Vector2 D = ( Calculations::Addition(wall.mStartPos, Calculations::Multiplication(wallDir, d)));
+   Vector2 D = ( Calculations::Addition(wall.mStartPos, Calculations::Multiplication(wallDir, d)) );
 
    // If D is outside of of min max bounds set it to be inside bounds.
 
@@ -89,7 +90,47 @@ bool Ball::CollisionCheck(Wall wall)
 
    float distance = Calculations::Magnitude(test);
 
-   return ( distance <= mCircle->mRadian);
+   return ( distance <= mCircle->mRadian );
+
+   //return intersect(circle, D);
+};
+
+bool Ball::CollisionCheck(Flipper flipper)
+{
+   float maxX = max(flipper.mPos.x, flipper.mLine.x);
+   float minX = min(flipper.mPos.x, flipper.mLine.x);
+   float maxY = max(flipper.mPos.y, flipper.mLine.y);
+   float minY = min(flipper.mPos.y, flipper.mLine.y);
+
+   // The naming here succs, but I can't come upp with a better alternative.
+   Vector2 pa = Calculations::Subtraction(mPos, flipper.mPos); //ballPos - wall.mStartPos;
+   Vector2 wallDir = ( Calculations::Subtraction(flipper.mLine, flipper.mPos) );
+   wallDir = Calculations::Normalize(wallDir);
+   float d = Calculations::Dot(pa, wallDir);//pa.dot(abDir);
+   Vector2 D = ( Calculations::Addition(flipper.mPos, Calculations::Multiplication(wallDir, d)) );
+
+   // If D is outside of of min max bounds set it to be inside bounds.
+
+  /* clamp(D.x_, minX, maxX);
+   clamp(D.y_, minY, maxY);*/
+
+   Vector2 dDupe = D;
+   Vector2 dDir = Calculations::Multiplication(wallDir, d);
+
+   if (D.x < minX)
+      D.x = minX;
+   if (D.x > maxX)
+      D.x = maxX;
+   if (D.y < minY)
+      D.y = minY;
+   if (D.y > maxY)
+      D.y = maxY;
+
+   Vector2 test = Calculations::Subtraction(D, mPos);
+
+   float distance = Calculations::Magnitude(test);
+
+   return ( distance <= mCircle->mRadian );
 
    //return intersect(circle, D);
 };
