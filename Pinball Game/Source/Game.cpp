@@ -145,6 +145,7 @@ void Game::SpecialKeys(int key, int state){
           case KEY_RELEASED:
             mLeft = KEY_DOWN;
             // Changle flipper state. Fling balls
+            mFlipper1.BallKicker(&mBall);
             break;
           
           //case KEY_PRESSED:
@@ -162,6 +163,7 @@ void Game::SpecialKeys(int key, int state){
        case KEY_RELEASED:
           mRight = KEY_DOWN;
           // Changle flipper state. Fling ball
+          mFlipper2.BallKicker(&mBall);
           break;
 
           //case KEY_PRESSED:

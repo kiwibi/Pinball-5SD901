@@ -73,3 +73,8 @@ float Calculations::CollisionAngle(Vector2 lhs, Vector2 rhs)
 
    return result;
 }
+
+float Calculations::Clamp(float a, float min, float max)
+{
+   return a < min ? min : a > max? max : a;
+}
