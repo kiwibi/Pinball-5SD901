@@ -12,11 +12,11 @@
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
 Game::Game()
-   : mBall(Ball(260, 50, 8, 20)),
+   : mBall(Ball(50, 50, 8, 20)),
    mWall1(Wall(11, 530, 150, 650)),
    mWall2(Wall(468, 530, 330, 650)),
-   mFlipper1(150, 650, 220, 650, 150, 660),
-   mFlipper2(330,650,260,650, 330, 660) // Float(C_PI) should hopefully make the paddle point the opposite direction
+   mFlipper1(150, 650, 220, 670, 150, 670),
+   mFlipper2(330, 650, 260, 670, 330, 670) // Float(C_PI) should hopefully make the paddle point the opposite direction
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
@@ -39,24 +39,24 @@ void Game::ChangeSize(int w, int h){
 }
 //---------------------------------------------------------------------
 //---------------------------------------------------------------------
-void Game::CheckCollision()
+void Game::CheckCollision(int deltaTime)
 {
    if (mBall.CollisionCheck(mWall1))
    {
-      mBall.Collide(mWall1.mNormal);
+      mBall.Collide(mWall1.mNormal, deltaTime);
    }
    else if ( mBall.CollisionCheck(mWall2) )
    {
-      mBall.Collide(mWall2.mNormal);
+      mBall.Collide(mWall2.mNormal, deltaTime);
    }
 
    if (mBall.CollisionCheck(mFlipper1))
    {
-      mBall.Collide(mFlipper1.mNormal);
+      mBall.Collide(mFlipper1.mNormal, deltaTime);
    }
    else if (mBall.CollisionCheck(mFlipper2))
    {
-      mBall.Collide(mFlipper2.mNormal);
+      mBall.Collide(mFlipper2.mNormal, deltaTime);
    }
    /*if (mBall.CollisionCheck(mWall1) || mBall.CollisionCheck(mWall2))
    {

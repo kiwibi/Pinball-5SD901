@@ -21,7 +21,7 @@ struct Ball
 
    Ball(float posX, float posY, float radian, float segments);
    void Update(int deltaTime);
-   void Collide(Vector2 wallNorm);
+   void Collide(Vector2 wallNorm, int deltaTime);
    bool CollisionCheck(Wall wall);
    bool CollisionCheck(Flipper flipper);
    void Draw();

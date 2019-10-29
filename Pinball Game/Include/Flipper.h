@@ -6,6 +6,8 @@
 #include <Calculations.h>
 #include <Paddle.h>
 
+struct Ball;
+
 enum FlipperState
 {
    UP,
@@ -30,6 +32,8 @@ struct Flipper // This is the game logic represantation of the paddle
 
    void Update(int deltaTime);
    void Draw();
+
+   void BallKicker(Ball * ball); // Adds a force to the ball in the paddles normal direction. Not a CBT reference
 };
 
 #endif // !FLIPPER_H_INCLUDED

@@ -31,7 +31,7 @@ public:
     Game(void);
     //-------------------------------------------------------
     void  ChangeSize(int w, int h);
-    void CheckCollision();
+    void CheckCollision(int deltaTime);
     void Update(int deltaTime);
     void  Draw(int deltaTime);
     //-------------------------------------------------------

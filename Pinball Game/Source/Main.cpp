@@ -70,7 +70,7 @@ static void mainLoop (){
       timeAcummumulator += time.deltaTime;
       while (timeAcummumulator > 1)
       {
-      G.CheckCollision();
+      G.CheckCollision(time.deltaTime);
       G.Update(1);
       timeAcummumulator -= 1;
       }

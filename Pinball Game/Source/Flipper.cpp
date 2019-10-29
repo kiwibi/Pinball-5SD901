@@ -32,3 +32,8 @@ void Flipper::Draw()
 {
    mPaddle->Draw();
 }
+
+void Flipper::BallKicker(Ball* ball)
+{
+
+}
