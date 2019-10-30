@@ -12,7 +12,8 @@ struct Wall
 
    Vector2 mNormal;
 
-   Wall(float startX, float startY, float endX, float endY);
+   Wall(float startX, float startY, float endX, float endY); // Tries to point the normal upwards.
+   Wall(bool up, bool right, float startX, float startY, float endX, float endY); // Tries to point the normal in a specified direction.
    void Draw();
 };
 

@@ -4,6 +4,26 @@
 #include <math.h>
 #include <SDL_opengl.h>
 
+Wall::Wall(bool up, bool right, float startX, float startY, float endX, float endY)
+{
+   mStartPos.x = startX;
+   mStartPos.y = startY;
+   mEndPos.x = endX;
+   mEndPos.y = endY;
+
+   Vector2 temp = Calculations::Subtraction(mStartPos, mEndPos);
+
+   mNormal = Calculations::Rotate(Calculations::Normalize(temp), C_PI / 2.0f);
+
+   if (up && mNormal.y >= 0 || !up && mNormal.y < 0)
+   {
+      mNormal.y *= -1;
+   }
+   if (right && mNormal.x <= 0 || !right && mNormal.x > 0)
+   {
+      mNormal.x *= -1;
+   }
+};
 Wall::Wall(float startX, float startY, float endX, float endY)
 {
    mStartPos.x = startX;

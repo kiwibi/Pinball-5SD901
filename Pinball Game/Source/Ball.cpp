@@ -4,6 +4,7 @@
 #include <Circle.h>
 #include <Wall.h>
 #include <Flipper.h>
+#include <math.h>
 
 Ball::Ball(float posX, float posY, float radian, float segments)
 {
@@ -12,6 +13,8 @@ Ball::Ball(float posX, float posY, float radian, float segments)
    mSpeed = { 0 , 0 }; //
    mCircle = new Circle(radian, segments);
    mBouncy = 0.7f;
+
+   lastStoredDistance =  {0};
 }
 
 void Ball::Update(int deltaTime)
@@ -48,8 +51,8 @@ void Ball::Collide(Vector2 wallNorm, int deltaTime)
    //mSpeed = Calculations::Rotate(mSpeed, angle);
    mSpeed = Calculations::Multiplication(mSpeed, mBouncy);
 
-   mPos.x += mSpeed.x * deltaTime/60;
-   mPos.y += mSpeed.y * deltaTime / 60;
+   mPos.x +=  (8 - fabsf(lastStoredDistance.x)) * wallNorm.x; // Should push the ball away 1 radia from the wall.
+   mPos.y += ( 8 - fabsf(lastStoredDistance.y)) * wallNorm.y;
 }
 
 float max(float rhs, float lhs)
@@ -93,9 +96,11 @@ bool Ball::CollisionCheck(Wall wall)
    if (D.y > maxY)
       D.y = maxY;
 
-   Vector2 test = Calculations::Subtraction(D, mPos);
+   Vector2 distanceVector = Calculations::Subtraction(D, mPos);
 
-   float distance = Calculations::Magnitude(test);
+   float distance = Calculations::Magnitude(distanceVector);
+
+   lastStoredDistance = distanceVector;
 
    return ( distance <= mCircle->mRadian );
 
@@ -133,9 +138,11 @@ bool Ball::CollisionCheck(Flipper flipper)
    if (D.y > maxY)
       D.y = maxY;
 
-   Vector2 test = Calculations::Subtraction(D, mPos);
+   Vector2 distanceVector = Calculations::Subtraction(D, mPos);
 
-   float distance = Calculations::Magnitude(test);
+   float distance = Calculations::Magnitude(distanceVector);
+
+   lastStoredDistance = distanceVector;
 
    return ( distance <= mCircle->mRadian );
 

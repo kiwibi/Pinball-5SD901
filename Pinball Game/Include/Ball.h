@@ -19,6 +19,8 @@ struct Ball
    float mBouncy;
    Circle* mCircle;
 
+   Vector2 lastStoredDistance; // Stores the distance when the ball touches a wall.
+
    Ball(float posX, float posY, float radian, float segments);
    void Update(int deltaTime);
    void Collide(Vector2 wallNorm, int deltaTime);
