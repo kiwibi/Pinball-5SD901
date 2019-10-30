@@ -16,7 +16,11 @@ Game::Game()
    mWall1(Wall(11, 530, 150, 650)),
    mWall2(Wall(468, 530, 330, 650)),
    mFlipper1(150, 650, 220, 670, 150, 670),
-   mFlipper2(330, 650, 260, 670, 330, 670) // Float(C_PI) should hopefully make the paddle point the opposite direction
+   mFlipper2(330, 650, 260, 670, 330, 670), // Float(C_PI) should hopefully make the paddle point the opposite direction
+   mWallSquare1(Wall(190, 250, 240, 300)),
+   mWallSquare2(Wall(240, 300, 290, 250)),
+   mWallSquare3(Wall(190, 251, 240, 201)),
+   mWallSquare4(Wall(240, 201, 290, 251))
 {
 	mMtxFont = new char[128][7][5];
 	InitMtxFont();
@@ -48,6 +52,22 @@ void Game::CheckCollision(int deltaTime)
    else if ( mBall.CollisionCheck(mWall2) )
    {
       mBall.Collide(mWall2.mNormal, deltaTime);
+   }
+
+   if (mBall.CollisionCheck(mWallSquare1))
+   {
+      mBall.Collide(mWallSquare1.mNormal, deltaTime);
+   }
+   else if (mBall.CollisionCheck(mWallSquare2))
+   {
+      mBall.Collide(mWallSquare2.mNormal, deltaTime);
+   } else if (mBall.CollisionCheck(mWallSquare3))
+   {
+      mBall.Collide(mWallSquare3.mNormal, deltaTime);
+   }
+   else if (mBall.CollisionCheck(mWallSquare4))
+   {
+      mBall.Collide(mWallSquare4.mNormal, deltaTime);
    }
 
    if (mBall.CollisionCheck(mFlipper1))
@@ -96,6 +116,11 @@ void Game::Draw(int deltaTime){
    //----------------------------------------------Walls
    mWall1.Draw();
    mWall2.Draw();
+   //----------------------------------------------Wall Square
+   mWallSquare1.Draw();
+   mWallSquare2.Draw();
+   mWallSquare3.Draw();
+   mWallSquare4.Draw();
    //----------------------------------------------Ball
    mBall.Draw();
    //----------------------------------------------Flippers

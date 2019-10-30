@@ -59,6 +59,10 @@ public:
     Flipper mFlipper1;
     Flipper mFlipper2;
 
+    Wall mWallSquare1; // Hade varit smart om vi gjorde så att våra väggar tillät segment
+    Wall mWallSquare2;
+    Wall mWallSquare3;
+    Wall mWallSquare4;
 
     KeyState mLeft;
     KeyState mRight;
