@@ -41,6 +41,7 @@ static void mainLoop (){
     int key, state;
     Time time;
     int timeAcummumulator = 0;
+    int refreshRate = 1; // The closer to 1 the faster it is.
     while (!quit) {
        time.Update();
         //----------------------------------
@@ -68,11 +69,11 @@ static void mainLoop (){
         }
         //----------------------------------
       timeAcummumulator += time.deltaTime;
-      while (timeAcummumulator > 1)
+      while (timeAcummumulator > refreshRate)
       {
-      G.CheckCollision(time.deltaTime);
+      G.CheckCollision(refreshRate);
       G.Update(1);
-      timeAcummumulator -= 1;
+      timeAcummumulator -= refreshRate;
       }
 
       G.Draw(time.deltaTime);
